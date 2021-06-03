@@ -13,6 +13,27 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic 
     f7Page(
+      options = list(
+        theme = "md",
+        dark = TRUE,
+        filled = FALSE,
+        color = "#007aff",
+        touch = list(
+          tapHold = TRUE,
+          tapHoldDelay = 750,
+          iosTouchRipple = FALSE
+        ),
+        iosTranslucentBars = FALSE,
+        navbar = list(
+          iosCenterTitle = TRUE,
+          hideNavOnPageScroll = TRUE,
+          mdCenterTitle = TRUE
+        ),
+        toolbar = list(
+          hideNavOnPageScroll = FALSE
+        ),
+        pullToRefresh = FALSE
+      ),
       title = "{truelle}",
       f7TabLayout(
         #panels = tagList(
@@ -23,25 +44,27 @@ app_ui <- function(request) {
           title = "{truelle}",
           hairline = TRUE,
           shadow = TRUE,
-          f7Flex(
-            f7Back(targetId = "widget_nav"),
-            f7Next(targetId = "widget_nav"),
-            a(
-              href = "#", 
-              id = "close_app",
-              class = "button button-small action-button display-flex margin-left-half", 
-              f7Icon("xmark_circle")
-            ),
-            a(
-              class = "button button-small action-button display-flex margin-left-half",
-              id = "run_code_output",
-              f7Icon("play")
-            ),
-            uiOutput("clip_button"),
-            a(
-              class = "button button-small display-flex margin-left-half",
-              id = "theme_switch",
-              f7Icon("sun_max")
+          subNavbar = f7SubNavbar(
+            f7Flex(
+              f7Back(targetId = "widget_nav"),
+              f7Next(targetId = "widget_nav"),
+              a(
+                href = "#", 
+                id = "close_app",
+                class = "button button-small action-button display-flex margin-left-half", 
+                f7Icon("xmark_circle")
+              ),
+              a(
+                class = "button button-small action-button display-flex margin-left-half",
+                id = "run_code_output",
+                f7Icon("play")
+              ),
+              uiOutput("clip_button"),
+              a(
+                class = "button button-small display-flex margin-left-half",
+                id = "theme_switch",
+                f7Icon("sun_max")
+              )
             )
           )
         ),
