@@ -229,7 +229,8 @@ app_server <- function( input, output, session ) {
     input$package_path
   }, {
     
-    if (file.exists(input$package_path)) {
+    is_golem <- file.exists(file.path(input$package_path, "inst/golem-config.yml"))
+    if (is_golem) {
       f7Dialog(
         title = "Oupps",
         text = "Package already exists here! Please use another path", 
