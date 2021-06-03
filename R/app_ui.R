@@ -55,6 +55,14 @@ app_ui <- function(request) {
                     }
                     $()
                   });
+                  
+                  Shiny.addCustomMessageHandler('toggle_run_button', function(message) {
+                    if (message) {
+                      $('#run_code_output').show();
+                    } else {
+                      $('#run_code_output').hide();
+                    }
+                  });
                 });"
               )
             ),
@@ -84,13 +92,15 @@ app_ui <- function(request) {
           f7Tab(
             tabName = "Output",
             icon = f7Icon("document_text"),
-            f7Button(
-              "run_code_output",
-              "Run code",
+            f7Segment(
+              f7Button(
+                "run_code_output",
+                "Run code"
+              )
             ),
             aceEditor(
               outputId = "code_output",
-              value = "Initial text for editor here",
+              value = "",
               mode = "r",
               theme = "monokai"
             )

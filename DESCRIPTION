@@ -9,6 +9,7 @@ Imports:
     callr,
     config (>= 0.3.1),
     golem (>= 0.3.1),
+    jsonlite,
     processx,
     rlang,
     shiny (>= 1.6.0),

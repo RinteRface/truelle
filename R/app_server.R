@@ -6,11 +6,20 @@
 #' @import shinyMobile
 #' @importFrom shinyAce updateAceEditor
 #' @importFrom callr r_bg
+#' @importFrom jsonlite toJSON
 #' @noRd
 app_server <- function( input, output, session ) {
   # Your application server logic 
   observeEvent(input$project_type, {
     session$sendCustomMessage("toggle_project_type", input$project_type)
+  })
+  
+  observeEvent(c(input$package_path, input$project_type), {
+    cond <- (input$project_type != "placeholder" && nchar(input$package_path) > 0)
+    session$sendCustomMessage(
+      "toggle_run_button", 
+      toJSON(cond, auto_unbox = TRUE)
+    )
   })
   
   observeEvent(input$widget_nav,{
