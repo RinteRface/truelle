@@ -66,7 +66,7 @@ add_ui_template <- function(template) {
     '  unlink("R/app_ui.R", TRUE, TRUE) \n',
     '  file.copy( \n',
     '   system.file( \n',
-    '    "inst/templates_ui/', template, '.R", \n', 
+    '    "templates_ui/', template, '.R", \n', 
     '    package = "truelle" \n',
     '   ), \n',
     '   "R/app_ui.R" \n',
@@ -74,11 +74,12 @@ add_ui_template <- function(template) {
     '  unlink("R/app_server.R", TRUE, TRUE) \n',
     '  file.copy( \n',
     '   system.file( \n',
-    '    "inst/templates_server/', template, '.R", \n', 
+    '    "templates_server/', template, '.R", \n', 
     '    package = "truelle" \n',
     '   ), \n',
     '   "R/app_server.R" \n',
     '  ) \n',
+    '  usethis::use_package("shinyMobile") \n',
     collapse = "\n"
   )
 }

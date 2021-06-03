@@ -84,19 +84,20 @@ app_server <- function( input, output, session ) {
             f7Toggle(
               inputId = paste0("set_usethis_", names(usethis_commons)[[i]]),
               label = names(usethis_commons)[[i]],
-              checked = FALSE
+              checked = TRUE
             )
           })
           
         ),
-        f7AccordionItem(
-          title = "{testthat} commons",
-          f7Toggle(
-            inputId = "allow_recommended_tests", 
-            label = "Recommanded tests", 
-            checked = TRUE
-          )
-        ),
+        # Bug with interactivity... check what we can do ...
+        #f7AccordionItem(
+        #  title = "{testthat} commons",
+        #  f7Toggle(
+        #    inputId = "allow_recommended_tests", 
+        #    label = "Recommanded tests", 
+        #    checked = FALSE
+        #  )
+        #),
         f7AccordionItem(
           title = "Dependencies",
           f7Toggle(
