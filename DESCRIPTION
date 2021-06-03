@@ -6,10 +6,13 @@ Description: Easily setup a {golem}, {packer}, {reactR} and {shiny} project
   with an intuitive Gadget. Perfect if you don't have good memory.
 License: MIT + file LICENSE
 Imports: 
+    callr,
     config (>= 0.3.1),
     golem (>= 0.3.1),
     processx,
+    rlang,
     shiny (>= 1.6.0),
+    shinyAce,
     shinyMobile
 Encoding: UTF-8
 LazyData: true
