@@ -37,7 +37,12 @@ app_ui <- function(request) {
               id = "run_code_output",
               f7Icon("play")
             ),
-            uiOutput("clip_button")
+            uiOutput("clip_button"),
+            a(
+              class = "button button-small display-flex margin-left-half",
+              id = "theme_switch",
+              f7Icon("sun_max")
+            )
           )
         ),
         f7Tabs(
@@ -71,6 +76,23 @@ app_ui <- function(request) {
                       $('#clip_button').hide();
                     }
                   });
+                  
+                  $(document).one('shiny:connected', function() {
+                    var isDark = $('html').hasClass('theme-dark');
+                    Shiny.setInputValue('is_dark', isDark);
+                  });
+                  
+                  $('#theme_switch').on('click', function() {
+                    var isDark = $('html').hasClass('theme-dark');
+                    if (isDark) {
+                      $(this).find('.f7-icons').html('moon_fill');
+                      $('html').removeClass('theme-dark');
+                    } else {
+                      $(this).find('.f7-icons').html('sun_max');
+                      $('html').addClass('theme-dark');
+                    }
+                    Shiny.setInputValue('is_dark', !isDark, {priority: 'event'});
+                  })
                 });"
               )
             ),
@@ -136,8 +158,7 @@ app_ui <- function(request) {
             aceEditor(
               outputId = "code_output",
               value = "",
-              mode = "r",
-              theme = "chaos"
+              mode = "r"
             )
           )
         )

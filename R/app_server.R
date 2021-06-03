@@ -404,6 +404,15 @@ app_server <- function( input, output, session ) {
       )
     })
   
+  # Update ace editor on dark mode but don't run at start
+  observeEvent(input$is_dark, {
+    updateAceEditor(
+      session, 
+      "code_output",
+      theme = if (input$is_dark) "chaos" else "eclipse"
+    )
+  })
+  
   # Copy to clipboard
   output$clip_button <- renderUI({
     rclipButton(
