@@ -68,7 +68,7 @@ app_server <- function( input, output, session ) {
       f7Block(
         inset = TRUE, 
         f7AccordionItem(
-          title = "Package path",
+          title = div(class = "text-color-blue", "Package path"),
           open = TRUE, 
           f7Text(
             inputId = "package_path", 
@@ -78,7 +78,7 @@ app_server <- function( input, output, session ) {
           )
         ),
         f7AccordionItem(
-          title = "Metadata",
+          title = div(class = "text-color-blue", "Metadata"),
           f7Block(
             inset = TRUE, 
             strong = TRUE,
@@ -90,7 +90,7 @@ app_server <- function( input, output, session ) {
           )
         ),
         f7AccordionItem(
-          title = "{usethis} commons",
+          title = div(class = "text-color-blue", "{usethis} commons"),
           # common usethis tasks
           lapply(seq_along(usethis_commons), function(i) {
             f7Block(
@@ -116,7 +116,7 @@ app_server <- function( input, output, session ) {
         #  )
         #),
         f7AccordionItem(
-          title = "Dependencies",
+          title = div(class = "text-color-blue", "Dependencies"),
           f7Block(
             inset = TRUE, 
             strong = TRUE,
@@ -128,7 +128,7 @@ app_server <- function( input, output, session ) {
           )
         ),
         f7AccordionItem(
-          title = "{golem} utils",
+          title = div(class = "text-color-blue", "{golem} utils"),
           f7Block(
             inset = TRUE, 
             strong = TRUE,
@@ -140,7 +140,7 @@ app_server <- function( input, output, session ) {
           )
         ),
         f7AccordionItem(
-          title = "Module",
+          title = div(class = "text-color-blue", "Shiny modules"),
           f7Block(
             inset = TRUE, 
             strong = TRUE,
@@ -152,7 +152,7 @@ app_server <- function( input, output, session ) {
           )
         ),
         f7AccordionItem(
-          title = "Web dev tools",
+          title = div(class = "text-color-blue", "Web dev tools"),
           lapply(seq_along(webdev_commons), function(i) {
             f7Block(
               inset = TRUE, 
@@ -189,7 +189,7 @@ app_server <- function( input, output, session ) {
           )
         ),
         f7AccordionItem(
-          title = "Other options",
+          title = div(class = "text-color-blue", "Other options"),
           f7Block(
             inset = TRUE, 
             strong = TRUE,
