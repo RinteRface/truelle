@@ -6,7 +6,7 @@
 #' @import shinyMobile
 #' @importFrom shinyAce updateAceEditor
 #' @importFrom callr r_bg
-#' @importFrom jsonlite toJSON
+#' @importFrom jsonlite toJSON 
 #' @noRd
 app_server <- function( input, output, session ) {
   
@@ -270,18 +270,22 @@ app_server <- function( input, output, session ) {
   # Update custom hook based on many options
   observeEvent({
     req(input$engine_type == "golem")
-    input$package_path
-    input$set_golem_options
-    #input$allow_recommended_tests,
-    input$use_golem_utils
-    input$use_recommended_deps 
-    input$add_module_skeleton
-    input$css_template
-    input$js_template
-    input$selected_template
-    eval(parse(text = paste0("input$create_golem_", names(webdev_commons))))
-    eval(parse(text = paste0("input$set_usethis_", names(usethis_commons))))
-    eval(parse(text = paste0("input$", names(pkg_description_fields))))
+    req(input$package_path)
+    c(
+      input$package_path,
+      input$edit_description,
+      input$set_golem_options,
+      #input$allow_recommended_tests,
+      input$use_golem_utils,
+      input$use_recommended_deps,
+      input$add_module_skeleton,
+      input$css_template,
+      input$js_template,
+      input$selected_template,
+      eval(parse(text = paste0("input$create_golem_", names(webdev_commons)))),
+      eval(parse(text = paste0("input$set_usethis_", names(usethis_commons)))),
+      eval(parse(text = paste0("input$", names(pkg_description_fields))))
+    )
   }, 
   {
     if (nchar(input$css_template) > 0) {
@@ -388,6 +392,16 @@ app_server <- function( input, output, session ) {
         value = new_val
       )
     })
+  
+  # Copy to clipboard
+  output$clip_button <- renderUI({
+    rclipButton(
+      "copy_code_output", 
+      div(style = "padding-right: 5px", "Copy code"),  
+      input$code_output, 
+      icon = f7Icon("camera")
+    )
+  })
   
   
   # Run the command in another process

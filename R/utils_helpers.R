@@ -149,3 +149,35 @@ createRadioOptions <- function(choices, selected, inputId) {
   
   shiny::tags$ul(choicesTag)
 }
+
+
+# Custom clipboard button
+rclipButton <- function (inputId, label, clipText, icon = NULL, modal = FALSE) 
+{
+  
+  el <- a(
+    id = inputId,
+    class = "button button-small action-button display-flex margin-left-half",
+    tagList(label, icon)
+  )
+  el$attribs$`data-clipboard-text` <- clipText
+  tagList(
+    el, 
+    if (modal) {
+      tags$script(
+        sprintf(
+          "new ClipboardJS(\".button\", { container: document.getElementById(\"%s\") } ); ", 
+          inputId
+        )
+      )
+    }
+    else {
+      tags$script(
+        sprintf(
+          "new ClipboardJS(\".button\", document.getElementById(\"%s\") );", 
+          inputId
+        )
+      )
+    }
+  )
+}

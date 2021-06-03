@@ -4,7 +4,8 @@
 #'     DO NOT REMOVE.
 #' @import shiny
 #' @import shinyMobile
-#' @importFrom shinyAce aceEditor 
+#' @importFrom shinyAce aceEditor
+#' @importFrom rclipboard rclipboardSetup 
 #' @noRd
 app_ui <- function(request) {
   tagList(
@@ -14,10 +15,10 @@ app_ui <- function(request) {
     f7Page(
       title = "{truelle}",
       f7TabLayout(
-        panels = tagList(
-          f7Panel(title = "Left Panel", side = "left", theme = "light", "Blabla", effect = "cover"),
-          f7Panel(title = "Right Panel", side = "right", theme = "dark", "Blabla", effect = "cover")
-        ),
+        #panels = tagList(
+        #  f7Panel(title = "Left Panel", side = "left", theme = "light", "Blabla", effect = "cover"),
+        #  f7Panel(title = "Right Panel", side = "right", theme = "dark", "Blabla", effect = "cover")
+        #),
         navbar = f7Navbar(
           title = "{truelle}",
           hairline = TRUE,
@@ -30,18 +31,23 @@ app_ui <- function(request) {
               id = "close_app",
               class = "button button-small action-button display-flex margin-left-half", 
               f7Icon("xmark_circle")
-            )
+            ),
+            a(
+              class = "button button-small action-button display-flex margin-left-half",
+              id = "run_code_output",
+              f7Icon("play")
+            ),
+            uiOutput("clip_button")
           )
         ),
         f7Tabs(
           id = "widget_nav",
           animated = TRUE,
-          #swipeable = TRUE,
           f7Tab(
             tabName = "Home",
             icon = f7Icon("house"),
             active = TRUE,
-            
+            rclipboardSetup(),
             tags$head(
               tags$script(
                 "$(function() {
@@ -58,9 +64,11 @@ app_ui <- function(request) {
                   
                   Shiny.addCustomMessageHandler('toggle_run_button', function(message) {
                     if (message) {
-                      $('#run_code_output').show();
+                      $('#run_code_output').children().show();
+                      $('#clip_button').show();
                     } else {
-                      $('#run_code_output').hide();
+                      $('#run_code_output').children().hide();
+                      $('#clip_button').hide();
                     }
                   });
                 });"
@@ -113,12 +121,6 @@ app_ui <- function(request) {
           f7Tab(
             tabName = "Output",
             icon = f7Icon("document_text"),
-            f7Segment(
-              f7Button(
-                "run_code_output",
-                "Run code"
-              )
-            ),
             aceEditor(
               outputId = "code_output",
               value = "",

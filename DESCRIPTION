@@ -11,6 +11,7 @@ Imports:
     golem (>= 0.3.1),
     jsonlite,
     processx,
+    rclipboard,
     rlang,
     shiny (>= 1.6.0),
     shinyAce,
