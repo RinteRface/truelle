@@ -110,10 +110,16 @@ app_ui <- function(request) {
                   subtitle = "{golem} default template",
                   text = "Best choice if you don't know where to start"
                 ),
-                shinyMobile = list(
+                shinyMobile_simple = list(
                   title = "shinyMobile_simple",
                   subtitle = "Simplest {shinyMobile} template",
                   text = "Ideal for simple apps with one page content"
+                ),
+                shinyMobile_tabs = list(
+                  title = "shinyMobile_tabs",
+                  subtitle = "Tabs layout for {shinyMobile}",
+                  text = "Ideal for complex apps with multi tabs content.
+                  Perfect for mobile devices."
                 )
               )
             )
