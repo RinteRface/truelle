@@ -153,24 +153,28 @@ app_ui <- function(request) {
                 default = list(
                   title = "golem_default",
                   subtitle = "{golem} default template",
-                  text = "Best choice if you don't know where to start"
+                  text = "Best choice if you don't know where to start",
+                  image = "https://raw.githubusercontent.com/ThinkR-open/golem/master/inst/rstudio/templates/project/golem.png"
                 ),
                 shinyMobile_simple = list(
                   title = "shinyMobile_simple",
                   subtitle = "Simplest {shinyMobile} template",
-                  text = "Ideal for simple apps with one page content"
+                  text = "Ideal for simple apps with one page content.",
+                  image = "https://rinterface.github.io/shinyMobile/reference/figures/logo.png"
                 ),
                 shinyMobile_tabs = list(
                   title = "shinyMobile_tabs",
                   subtitle = "Tabs layout for {shinyMobile}",
                   text = "Ideal for complex apps with multi tabs content.
-                  Perfect for mobile devices."
+                  Perfect for mobile devices.",
+                  image = "https://rinterface.github.io/shinyMobile/reference/figures/logo.png"
                 ),
                 shinyMobile_split = list(
                   title = "shinyMobile_split",
                   subtitle = "Split layout for {shinyMobile}",
                   text = "Ideal for complex apps with multi tabs content.
-                  Perfect for larger mobile devices such as tablets."
+                  Perfect for larger mobile devices such as tablets.",
+                  image = "https://rinterface.github.io/shinyMobile/reference/figures/logo.png"
                 )
               )
             )

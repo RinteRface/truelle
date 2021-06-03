@@ -137,7 +137,14 @@ createRadioOptions <- function(choices, selected, inputId) {
         shiny::tags$i(class = "icon icon-radio"),
         shiny::tags$div(
           class = "item-inner",
-          shiny::tags$div(class="item-title", choices[[i]]$title),
+          shiny::tags$div(
+            class = "item-title-row",
+            shiny::tags$div(class="item-title", choices[[i]]$title),
+            shiny::tags$div(
+              class = "item-after item-media",
+              shiny::img(src = choices[[i]]$image, width = "7%", height = "7%")
+            )
+          ),
           shiny::tags$div(class = "item-subtitle", choices[[i]]$subtitle),
           shiny::tags$div(class = "item-text", choices[[i]]$text)
         )
