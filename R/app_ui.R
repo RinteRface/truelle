@@ -125,7 +125,7 @@ app_ui <- function(request) {
               outputId = "code_output",
               value = "",
               mode = "r",
-              theme = "monokai"
+              theme = "chaos"
             )
           )
         )
