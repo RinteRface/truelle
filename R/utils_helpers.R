@@ -14,7 +14,8 @@ usethis_commons <- list(
   coc = "  usethis::use_code_of_conduct()",
   lifecycle = '  usethis::use_lifecycle_badge( "Experimental" )',
   news = "  usethis::use_news_md( open = FALSE )",
-  data = "  usethis::use_data_raw()"
+  data = "  usethis::use_data_raw()",
+  git = "  usethis::use_git()"
 )
 
 
@@ -54,7 +55,7 @@ list_2_char <- function(l, prefix, input) {
     dropNulls() %>%
     paste0(collapse = "\n")
   
-  if (nchar(temp) > 0) temp <- paste0(temp, "\n")
+  if (nchar(temp) > 0) temp <- paste0(temp, "\n \n", collapse = "\n")
   temp
 }
 

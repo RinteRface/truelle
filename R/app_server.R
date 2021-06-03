@@ -208,7 +208,7 @@ app_server <- function( input, output, session ) {
   observeEvent(
     c(
       input$set_golem_options,
-      input$allow_recommended_tests,
+      #input$allow_recommended_tests,
       input$use_golem_utils,
       input$use_recommended_deps, 
       input$add_module_skeleton,
@@ -239,6 +239,7 @@ app_server <- function( input, output, session ) {
           collapse = "\n"
         )
       }
+      
       web_dev_tasks <- list_2_char(webdev_commons, "create_golem_", input)
       usethis_tasks <- list_2_char(usethis_commons, "set_usethis_", input)
       
@@ -261,7 +262,7 @@ app_server <- function( input, output, session ) {
         },
         if (input$set_golem_options) "  golem::set_golem_options() \n",
         usethis_tasks, 
-        if (input$allow_recommended_tests) "  golem::use_recommended_tests() \n",
+        #if (input$allow_recommended_tests) "  golem::use_recommended_tests() \n",
         if (input$use_recommended_deps) "  golem::use_recommended_deps() \n",
         if (input$use_golem_utils) {
           paste0(
