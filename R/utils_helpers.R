@@ -122,6 +122,9 @@ f7Radio <- function(inputId, label, choices = NULL, selected = NULL) {
 #'
 #' @keywords internal
 createRadioOptions <- function(choices, selected, inputId) {
+  titles <- unlist(lapply(seq_along(choices), function (c) choices[[c]]$title))
+  selectedPosition <- if (!is.null(selected)) match(selected, titles) else NULL
+  
   choicesTag <- lapply(X = seq_along(choices), function(i) {
     shiny::tags$li(
       shiny::tags$label(
@@ -141,6 +144,8 @@ createRadioOptions <- function(choices, selected, inputId) {
       )
     )
   })
+  
+  if (!is.null(selected)) choicesTag[[selectedPosition]]$children[[1]]$children[[1]]$attribs[["checked"]] <- NA
   
   shiny::tags$ul(choicesTag)
 }

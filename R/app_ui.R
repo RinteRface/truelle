@@ -78,7 +78,7 @@ app_ui <- function(request) {
               ),
               selected = NULL
             ),
-            truelle::f7Radio(
+            shinyMobile::f7Radio(
               inputId = "engine_type",
               label = "Select an engine",
               choices = NULL
@@ -95,9 +95,14 @@ app_ui <- function(request) {
             truelle::f7Radio(
               inputId = "selected_template",
               label = "Selected template",
+              selected = "golem_default",
               choices = list(
+                default = list(
+                  title = "golem_default",
+                  subtitle = "{golem} default template",
+                  text = "Best choice if you don't know where to start"
+                ),
                 shinyMobile = list(
-                  checked = FALSE,
                   title = "shinyMobile_simple",
                   subtitle = "Simplest {shinyMobile} template",
                   text = "Ideal for simple apps with one page content"
