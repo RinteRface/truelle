@@ -45,9 +45,9 @@ app_server <- function( input, output, session ) {
     updateF7Radio("engine_type", choices = choices)
   })
   
-  observeEvent(input$engine_type, {
-    updateF7Tabs("widget_nav", selected = "Configuration")
-  })
+  #observeEvent(input$engine_type, {
+  #  updateF7Tabs("widget_nav", selected = "Configuration")
+  #})
   
   output$config_steps <- renderUI({
     req(input$engine_type)
@@ -159,11 +159,6 @@ app_server <- function( input, output, session ) {
             inputId = "set_golem_options",
             label = "Golem options",
             checked = FALSE
-          ),
-          f7Toggle(
-            inputId = "open_golem_project", 
-            label = "Open Project", 
-            checked = TRUE
           )
         )
       ) 
@@ -218,16 +213,16 @@ app_server <- function( input, output, session ) {
       input$add_module_skeleton,
       input$css_template,
       input$js_template,
+      input$selected_template,
       eval(parse(text = paste0("input$create_golem_", names(webdev_commons)))),
       eval(parse(text = paste0("input$set_usethis_", names(usethis_commons)))),
       eval(parse(text = paste0("input$", names(pkg_description_fields))))
     ), 
     {
-      
       if (nchar(input$css_template) > 0) {
         webdev_commons[["simple_css"]] <- paste0(
           '  golem::add_css_file( \n',
-          '   "custom_css" \n',
+          '   "custom_css", \n',
           "   template = ", input$css_template, "\n",
           '  )',
           collapse = "\n"
@@ -237,7 +232,7 @@ app_server <- function( input, output, session ) {
       if (nchar(input$js_template) > 0) {
         webdev_commons[["simple_js"]] <- paste0(
           '  golem::add_js_file( \n',
-          '   "custom_js" \n',
+          '   "custom_js", \n',
           "   template = ", input$js_template, "\n",
           '  )',
           collapse = "\n"
@@ -285,6 +280,7 @@ app_server <- function( input, output, session ) {
           )
         },
         web_dev_tasks,
+        add_ui_template(input$selected_template),
         " }",
         collapse = "\n"
       )
@@ -299,7 +295,6 @@ app_server <- function( input, output, session ) {
   observeEvent(
     c(
       input$package_path,
-      input$open_golem_project,
       input$custom_golem_hook
     ), {
       req(nchar(input$package_path) > 0)
@@ -313,7 +308,7 @@ app_server <- function( input, output, session ) {
       new_val <- paste0(
         'golem::create_golem( \n',
         ' path = "', input$package_path, '", \n',
-        ' open = ', input$open_golem_project, ', \n', 
+        ' open = FALSE, \n', 
         ' project_hook = ', hook,' \n',
         ')',
         collapse = "\n"

@@ -78,7 +78,7 @@ app_ui <- function(request) {
               ),
               selected = NULL
             ),
-            f7Radio(
+            truelle::f7Radio(
               inputId = "engine_type",
               label = "Select an engine",
               choices = NULL
@@ -88,6 +88,22 @@ app_ui <- function(request) {
             tabName = "Configuration",
             icon = f7Icon("gear"),
             uiOutput("config_steps")
+          ),
+          f7Tab(
+            tabName = "Template",
+            icon = f7Icon("paintbrush"),
+            truelle::f7Radio(
+              inputId = "selected_template",
+              label = "Selected template",
+              choices = list(
+                shinyMobile = list(
+                  checked = FALSE,
+                  title = "shinyMobile_simple",
+                  subtitle = "Simplest {shinyMobile} template",
+                  text = "Ideal for simple apps with one page content"
+                )
+              )
+            )
           ),
           f7Tab(
             tabName = "Output",

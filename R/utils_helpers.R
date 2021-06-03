@@ -34,7 +34,6 @@ webdev_commons <- list(
   simple_css = '  golem::add_css_file("custom")'
 )
 
-
 jobs <- list()
 
 run_text <- function(code) eval(parse(text = code))
@@ -62,10 +61,84 @@ list_2_char <- function(l, prefix, input) {
 
 # Copy a file template to the R folder to
 # replace the default app_ui.R provided by {golem}
-add_ui_template <- function(template_path) {
-  unlink("R/app_ui.R", TRUE, TRUE)
-  file.copy(
-    template_path,
-    "R/app_ui.R"
+add_ui_template <- function(template) {
+  paste0(
+    '  unlink("R/app_ui.R", TRUE, TRUE) \n',
+    '  file.copy( \n',
+    '   system.file( \n',
+    '    "inst/templates_ui/', template, '.R", \n', 
+    '    package = "truelle" \n',
+    '   ), \n',
+    '   "R/app_ui.R" \n',
+    '  ) \n',
+    '  unlink("R/app_server.R", TRUE, TRUE) \n',
+    '  file.copy( \n',
+    '   system.file( \n',
+    '    "inst/templates_server/', template, '.R", \n', 
+    '    package = "truelle" \n',
+    '   ), \n',
+    '   "R/app_server.R" \n',
+    '  ) \n',
+    collapse = "\n"
   )
+}
+
+
+#' Modified Framework7 radio input
+#'
+#' \code{f7Radio} creates a radio button input.
+#'
+#' @param inputId Radio input id.
+#' @param label Radio label
+#' @param choices List of choices. Must be a nested list. 
+#' @param selected Selected element. NULL by default.
+#'
+#' @export
+#' @rdname radio
+f7Radio <- function(inputId, label, choices = NULL, selected = NULL) {
+  
+  shiny::tagList(
+    shiny::tags$div(
+      class = "block-title",
+      label
+    ),
+    shiny::tags$div(
+      class = "list media-list shiny-input-radiogroup",
+      id = inputId,
+      createRadioOptions(choices, selected, inputId)
+    )
+  )
+  
+}
+
+
+#' Generates a list of option for \link{f7Radio}
+#'
+#' @param choices List of choices.
+#' @param selected Selected value
+#' @param inputId Radio input id.
+#'
+#' @keywords internal
+createRadioOptions <- function(choices, selected, inputId) {
+  choicesTag <- lapply(X = seq_along(choices), function(i) {
+    shiny::tags$li(
+      shiny::tags$label(
+        class = "item-radio item-radio-icon-start item-content",
+        shiny::tags$input(
+          type = "radio",
+          name = inputId,
+          value = choices[[i]]$title
+        ),
+        shiny::tags$i(class = "icon icon-radio"),
+        shiny::tags$div(
+          class = "item-inner",
+          shiny::tags$div(class="item-title", choices[[i]]$title),
+          shiny::tags$div(class = "item-subtitle", choices[[i]]$subtitle),
+          shiny::tags$div(class = "item-text", choices[[i]]$text)
+        )
+      )
+    )
+  })
+  
+  shiny::tags$ul(choicesTag)
 }
