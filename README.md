@@ -7,6 +7,7 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/RinteRface/truelle/workflows/R-CMD-check/badge.svg)](https://github.com/RinteRface/truelle/actions)
 <!-- badges: end -->
 
 The goal of truelle is to …
