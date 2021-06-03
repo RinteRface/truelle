@@ -120,6 +120,12 @@ app_ui <- function(request) {
                   subtitle = "Tabs layout for {shinyMobile}",
                   text = "Ideal for complex apps with multi tabs content.
                   Perfect for mobile devices."
+                ),
+                shinyMobile_split = list(
+                  title = "shinyMobile_split",
+                  subtitle = "Split layout for {shinyMobile}",
+                  text = "Ideal for complex apps with multi tabs content.
+                  Perfect for larger mobile devices such as tablets."
                 )
               )
             )
