@@ -228,12 +228,22 @@ app_server <- function( input, output, session ) {
   observeEvent({
     input$package_path
   }, {
-    validateF7Input(
-      inputId = "package_path",
-      pattern = "*",
-      info = "Package path like ~/Desktop/myPackage",
-      error = "Path cannot be empty!"
-    )
+    
+    if (file.exists(input$package_path)) {
+      f7Dialog(
+        title = "Oupps",
+        text = "Package already exists here! Please use another path", 
+        type = "alert"
+      )
+      updateF7Text("package_path", value = "")
+    } else {
+      validateF7Input(
+        inputId = "package_path",
+        pattern = "*",
+        info = "Package path like ~/Desktop/myPackage",
+        error = "Path cannot be empty!"
+      )
+    }
   })
   
   observeEvent({
