@@ -201,6 +201,12 @@ app_ui <- function(request) {
                     width = "40px", 
                     height = "40px"
                   )
+                ),
+                shinydashboard = list(
+                  title = "shinydashboard",
+                  subtitle = "Bootstrap 3 dashboard template",
+                  text = "The well know {shinydashboard} template.",
+                  image = NULL
                 )
               )
             )
