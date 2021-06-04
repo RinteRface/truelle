@@ -217,6 +217,12 @@ app_ui <- function(request) {
                     width = "40px", 
                     height = "40px"
                   )
+                ),
+                shiny_material = list(
+                  title = "shinymaterial",
+                  subtitle = "Materialize CSS for {shiny}",
+                  text = "Material design UI kit for {shiny}.",
+                  image = NULL
                 )
               )
             )
