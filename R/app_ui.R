@@ -154,27 +154,53 @@ app_ui <- function(request) {
                   title = "golem_default",
                   subtitle = "{golem} default template",
                   text = "Best choice if you don't know where to start",
-                  image = "https://raw.githubusercontent.com/ThinkR-open/golem/master/inst/rstudio/templates/project/golem.png"
+                  image = img(
+                    src = "www/golem_banner.svg", 
+                    width = "40px", 
+                    height = "40px"
+                  )
                 ),
                 shinyMobile_simple = list(
                   title = "shinyMobile_simple",
                   subtitle = "Simplest {shinyMobile} template",
                   text = "Ideal for simple apps with one page content.",
-                  image = "https://rinterface.github.io/shinyMobile/reference/figures/logo.png"
+                  image = img(
+                    src = "www/shinyMobile.svg",
+                    width = "40px", 
+                    height = "40px"
+                  )
                 ),
                 shinyMobile_tabs = list(
                   title = "shinyMobile_tabs",
                   subtitle = "Tabs layout for {shinyMobile}",
                   text = "Ideal for complex apps with multi tabs content.
                   Perfect for mobile devices.",
-                  image = "https://rinterface.github.io/shinyMobile/reference/figures/logo.png"
+                  image = img(
+                    src = "www/shinyMobile.svg",
+                    width = "40px", 
+                    height = "40px"
+                  )
                 ),
                 shinyMobile_split = list(
                   title = "shinyMobile_split",
                   subtitle = "Split layout for {shinyMobile}",
                   text = "Ideal for complex apps with multi tabs content.
                   Perfect for larger mobile devices such as tablets.",
-                  image = "https://rinterface.github.io/shinyMobile/reference/figures/logo.png"
+                  image = img(
+                    src = "www/shinyMobile.svg",
+                    width = "40px", 
+                    height = "40px"
+                  )
+                ),
+                bs4Dash = list(
+                  title = "bs4Dash",
+                  subtitle = "Bootstrap 4 dashboard template",
+                  text = "Ideal to build modern apps without losing the {shinydashboard} spirit.",
+                  image = img(
+                    src = "www/bs4Dash.svg",
+                    width = "40px", 
+                    height = "40px"
+                  )
                 )
               )
             )
@@ -207,7 +233,7 @@ golem_add_external_resources <- function(){
   add_resource_path(
     'www', app_sys('app/www')
   )
- 
+  
   tags$head(
     favicon(),
     bundle_resources(

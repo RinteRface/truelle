@@ -63,6 +63,9 @@ list_2_char <- function(l, prefix, input) {
 # Copy a file template to the R folder to
 # replace the default app_ui.R provided by {golem}
 add_ui_template <- function(template) {
+  
+  pkg_to_import <- strsplit(template, "_")[[1]][1]
+  
   paste0(
     '  unlink("R/app_ui.R", TRUE, TRUE) \n',
     '  file.copy( \n',
@@ -80,7 +83,8 @@ add_ui_template <- function(template) {
     '   ), \n',
     '   "R/app_server.R" \n',
     '  ) \n',
-    '  usethis::use_package("shinyMobile") \n',
+    if (pkg_to_import != "golem") '  usethis::use_package("', pkg_to_import, '") \n',
+    '  devtools::document() \n',
     collapse = "\n"
   )
 }
@@ -142,7 +146,7 @@ createRadioOptions <- function(choices, selected, inputId) {
             shiny::tags$div(class="item-title", choices[[i]]$title),
             shiny::tags$div(
               class = "item-after item-media",
-              shiny::img(src = choices[[i]]$image, width = "7%", height = "7%")
+              choices[[i]]$image
             )
           ),
           shiny::tags$div(class = "item-subtitle", choices[[i]]$subtitle),
