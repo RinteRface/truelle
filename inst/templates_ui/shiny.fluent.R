@@ -1,6 +1,6 @@
 #' The application User-Interface 
 #' 
-#' Bootstrap 3 dashboard template
+#' Fluent React UI template
 #' 
 #' @param request Internal parameter for `{shiny}`. 
 #'     DO NOT REMOVE.

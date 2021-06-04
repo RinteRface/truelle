@@ -1,6 +1,6 @@
 #' The application User-Interface 
 #' 
-#' Bootstrap 3 dashboard template
+#' Materialize CSS template
 #' 
 #' @param request Internal parameter for `{shiny}`. 
 #'     DO NOT REMOVE.

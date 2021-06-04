@@ -233,6 +233,16 @@ app_ui <- function(request) {
                     width = "40px", 
                     height = "40px"
                   )
+                ),
+                semantic_dashboard = list(
+                  title = "semantic.dashboard",
+                  subtitle = "Formantic dashboard UI for {shiny}",
+                  text = "Dashboard template powered by the Formantic UI toolkit for {shiny}.",
+                  image = img(
+                    src = "www/semantic-dashboard.png",
+                    width = "40px", 
+                    height = "40px"
+                  )
                 )
               )
             )
