@@ -223,6 +223,16 @@ app_ui <- function(request) {
                   subtitle = "Materialize CSS for {shiny}",
                   text = "Material design UI kit for {shiny}.",
                   image = NULL
+                ),
+                shiny_semantic = list(
+                  title = "shiny.semantic",
+                  subtitle = "Formantic UI for {shiny}",
+                  text = "Formantic UI toolkit for {shiny}.",
+                  image = img(
+                    src = "www/shiny-semantic.png",
+                    width = "40px", 
+                    height = "40px"
+                  )
                 )
               )
             )
