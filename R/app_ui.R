@@ -153,9 +153,9 @@ app_ui <- function(request) {
                 default = list(
                   title = "golem_default",
                   subtitle = "{golem} default template",
-                  text = "Best choice if you don't know where to start",
+                  text = "Best choice if you don't know where to start.",
                   image = img(
-                    src = "www/golem_banner.svg", 
+                    src = "www/golem.svg", 
                     width = "40px", 
                     height = "40px"
                   )
