@@ -207,6 +207,16 @@ app_ui <- function(request) {
                   subtitle = "Bootstrap 3 dashboard template",
                   text = "The well know {shinydashboard} template.",
                   image = NULL
+                ),
+                shiny_fluent = list(
+                  title = "shiny.fluent",
+                  subtitle = "Microsoft Fluent UI for {shiny}",
+                  text = "React-based user interface kit for {shiny}.",
+                  image = img(
+                    src = "www/shiny-fluent.png",
+                    width = "40px", 
+                    height = "40px"
+                  )
                 )
               )
             )

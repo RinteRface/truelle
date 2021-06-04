@@ -176,7 +176,7 @@ app_server <- function( input, output, session ) {
               "    } \n",
               
               '    write_there("body {") \n',
-              '    write_there("    background-color:red;") \n',
+              '    write_there("    background-color:white;") \n',
               '    write_there("}") \n',
               "   }",
               collapse = "\n"
