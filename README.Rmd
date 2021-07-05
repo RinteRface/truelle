@@ -8,7 +8,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
+  #fig.path = "man/figures/README-",
   out.width = "100%"
 )
 ```
@@ -20,37 +20,64 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/RinteRface/truelle/workflows/R-CMD-check/badge.svg)](https://github.com/RinteRface/truelle/actions)
 <!-- badges: end -->
 
-The goal of truelle is to ...
+The goal of `{truelle}` is to provide a GUI to the `{golem}` package and many more. 
 
 ## Installation
 
 You can install the released version of truelle from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("truelle")
+remotes::install_github("RinteRface/truelle")
 ```
 
-## Example
+## Workflow example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to start the `{truelle}` GUI:
 
-```{r example}
+```{r, eval=FALSE, example}
 library(truelle)
-## basic example code
+run_app()
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+### Step 1: project type
 
-```{r cars}
-summary(cars)
+Select __Package__ and choose the `{golem}` engine.
+
+```{r, echo = FALSE, fig.show="hold", out.width="50%"}
+knitr::include_graphics("man/figures/truelle-project-type.png")
+knitr::include_graphics("man/figures/truelle-project-engine.png")
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/master/examples>.
+### Step 2: options
 
-You can also embed plots, for example:
+Provide a valid package path and review project options.
 
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r, echo = FALSE, out.width='50%', fig.align='center'}
+knitr::include_graphics("man/figures/truelle-package-options.png")
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+
+### Step 3: UI layout
+
+Select the Shiny layout of your choice. 
+
+```{r, echo = FALSE, out.width='50%', fig.align='center'}
+knitr::include_graphics("man/figures/truelle-ui-template.png")
+```
+
+
+### Step 4: code output
+
+Click on the `r emo::ji("play")` button or copy/paste `r emo::ji("photo")` the code to your terminal...
+
+```{r, echo = FALSE, fig.show="hold", out.width="50%"}
+knitr::include_graphics("man/figures/truelle-output.png")
+knitr::include_graphics("man/figures/golem-package-structure.png")
+```
+
+
+### Step 5: develop
+
+- Open the new project.
+- Run `devtools::load_all()`.
+- Enjoy ...

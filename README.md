@@ -5,12 +5,10 @@
 
 <!-- badges: start -->
 
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/RinteRface/truelle/workflows/R-CMD-check/badge.svg)](https://github.com/RinteRface/truelle/actions)
 <!-- badges: end -->
 
-The goal of truelle is to …
+The goal of `{truelle}` is to provide a GUI to the `{golem}` package and
+many more.
 
 ## Installation
 
@@ -18,41 +16,45 @@ You can install the released version of truelle from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("truelle")
+remotes::install_github("RinteRface/truelle")
 ```
 
-## Example
+## Workflow example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to start the `{truelle}`
+GUI:
 
 ``` r
 library(truelle)
-## basic example code
+run_app()
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+### Step 1: project type
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
+Select **Package** and choose the `{golem}` engine.
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/master/examples>.
+<img src="man/figures/truelle-project-type.png" width="50%" /><img src="man/figures/truelle-project-engine.png" width="50%" />
 
-You can also embed plots, for example:
+### Step 2: options
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+Provide a valid package path and review project options.
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+<img src="man/figures/truelle-package-options.png" width="50%" style="display: block; margin: auto;" />
+
+### Step 3: UI layout
+
+Select the Shiny layout of your choice.
+
+<img src="man/figures/truelle-ui-template.png" width="50%" style="display: block; margin: auto;" />
+
+### Step 4: code output
+
+Click on the ▶️ button or copy/paste 📸 the code to your terminal…
+
+<img src="man/figures/truelle-output.png" width="50%" /><img src="man/figures/golem-package-structure.png" width="50%" />
+
+### Step 5: develop
+
+  - Open the new project.
+  - Run `devtools::load_all()`.
+  - Enjoy …
