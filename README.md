@@ -3,8 +3,9 @@
 
 # truelle
 
-<!-- badges: start -->
-
+<!-- badges: start 
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/RinteRface/truelle/workflows/R-CMD-check/badge.svg)](https://github.com/RinteRface/truelle/actions)
 <!-- badges: end -->
 
 The goal of `{truelle}` is to provide a GUI to the `{golem}` package and
@@ -49,7 +50,7 @@ Select the Shiny layout of your choice.
 
 ### Step 4: code output
 
-Click on the ▶️ button or copy/paste 📸 the code to your terminal…
+Click on the 🎮 button or copy/paste 📸 the code to your terminal…
 
 <img src="man/figures/truelle-output.png" width="50%" /><img src="man/figures/golem-package-structure.png" width="50%" />
 
@@ -58,3 +59,7 @@ Click on the ▶️ button or copy/paste 📸 the code to your terminal…
   - Open the new project.
   - Run `devtools::load_all()`.
   - Enjoy …
+
+## Disclaimer
+
+For now, only the `{golem}` workflow is supported.

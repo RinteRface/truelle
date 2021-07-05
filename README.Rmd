@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 # truelle
 
-<!-- badges: start -->
+<!-- badges: start 
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/RinteRface/truelle/workflows/R-CMD-check/badge.svg)](https://github.com/RinteRface/truelle/actions)
 <!-- badges: end -->
@@ -81,3 +81,7 @@ knitr::include_graphics("man/figures/golem-package-structure.png")
 - Open the new project.
 - Run `devtools::load_all()`.
 - Enjoy ...
+
+## Disclaimer
+
+For now, only the `{golem}` workflow is supported. 
