@@ -9,6 +9,7 @@ pkg_description_fields <- list(
 )
 
 usethis_commons <- list(
+  project = "  usethis::use_rstudio()",
   license = '  usethis::use_mit_license( "Golem User" )',  
   readme = "  usethis::use_readme_rmd( open = FALSE )",
   coc = "  usethis::use_code_of_conduct()",
